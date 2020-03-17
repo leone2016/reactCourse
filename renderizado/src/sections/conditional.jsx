@@ -38,11 +38,36 @@ class ComponentA extends Component {
 
 
 class ComponentB extends Component {
+    constructor() {
+        super();
+        this.state = {mouseX:0, mouseY:0}
+        // solucion a la funcion handlerMouseMove sin arraw function
+        // this.handlerMouseMove = this.handlerMouseMove.bind(this);
+    }
+    handlerClick (e){
+        console.log('hola Mundo 2020');
+        console.log(e);
+    }
+    handlerMouseMove = (e)=>{
+        const { clientX, clientY } = e;
+        // con esto se actualiza el script del componente
+        // es state es inmutable y no debemos modificarlo nunca directamente
+        // this.setState no se puede utilizar aqui ya que no existe, pero se puede enlazar el metodo BIND  en el constructor o utilizar un
+        // la funcion de flecha, ya que estas ultima siempre enlaza desde el contexto que se la declara
+        this.setState({mouseX: clientX, mouseY: clientY});
+    }
     render() {
         return (
             <div>
-               <p>Bienvenido, Usuario!</p>
+               <p>Bienvenido, Usuario! componenteB</p>
                 <button>Cerrar Sesión</button>
+                { /* se lo conoce como sintetic event */  }
+                <button onClick={this.handlerClick}>hi there!</button>
+                <div onMouseMove={this.handlerMouseMove}
+                    style={{ border: '1px solid #000', margin: 10, padding: 10}}>
+                    <p>{this.state.mouseX}</p>,
+                    <p>{this.state.mouseY}</p>
+                </div>
             </div>
         );
     }
@@ -57,7 +82,7 @@ function useConditionalRendering(mostrarA){
 class ConditionalSection extends Component {
     constructor(){
         super();
-        this.state = { isUserLogged: true }
+        this.state = { isUserLogged: false}
     }
     render() {
         // const conditionalComponent = useConditionalRendering(this.state.mostrarA)
