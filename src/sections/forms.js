@@ -14,10 +14,9 @@ class Forms extends Component {
     }
     handlerSubmit = (e)=>{
         e.preventDefault();
-        // const name = this.inputName.value;
-        // const twitter = document.getElementById('twitter').value;
-        // console.log(name, twitter);
-        console.log(this.state)
+        /* const name = this.inputName.value;
+        const twitter = document.getElementById('twitter').value; */
+        console.log(this.state);
     }
     handlerChange = (e)=>{
         console.log('Handler Change');
