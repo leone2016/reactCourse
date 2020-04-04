@@ -28,9 +28,38 @@ El ciclo de vida de los componentes se divide en tres fases
 * Binding (enlazamos) métodos de clase
 * En el montaje se ejecuta por primera vez el render(), al terminar la ejecución ya se podrá visualizar en el DOM
 
-CONSTRUCTOS(props)
+![ciclo montaje](https://raw.githubusercontent.com/leone2016/reactCourse/master/img/montaje.PNG)
 
+### CONSTRUCTOS(props):
+* Se ejecuta antes de montar el componente 
+* Inicializar el state del componente
+* binding contexto de los metodos
+    `this.handleClick = this.handleClick.bind` ó `handleClick = () => { ... }`
+* NO SE DEBE LLAMAR AL SETSTATE
 
+### componentWillMount():
+* Se ejecuta una vez
+* Se invoca antes de montar el componente y antes del render
+* todavía no tenemos el componten disponible en el DOM
+* Se recomienda usar el constructos en su lugar
+* SE PUEDE USAR `setState` y no provoca otro render
+
+```Js
+ComponenteNombre extends Component {
+    constructor(props){
+        console.log('Se ejecuta 1ro');
+    }
+    ComponenteNombre(){
+        console.log('Este es el componentWillMount() ')
+        console.log('Se ejecuta 2do');
+        console.log('aqui se puede utilizar this.setState({ algo: 'here' } )')
+    }
+    render(){
+        console.log('Se ejecuta 3ro');
+    }
+
+}
+```
 
 *Fase de actualización:* es la que se ejecuta cada ves
 
