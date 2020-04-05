@@ -72,13 +72,13 @@ class ComponentB extends Component {
         );
     }
 }
-function useConditionalRendering(mostrarA){
+/* function useConditionalRendering(mostrarA){
     if(!mostrarA){
         return <ComponentA/>
     }else{
         return <ComponentB/>
     }
-}
+} */
 class ConditionalSection extends Component {
     constructor(){
         super();

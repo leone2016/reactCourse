@@ -4,6 +4,7 @@ import ConditionalSection from '../src/sections/conditional'
 import Forms from '../src/sections/forms'
 import Box from './sections/children';
 import PropTypes from 'prop-types'
+import FetchExample from './sections/fetch-example';
 
 class Articulo extends Component{
   static propTypes = {
@@ -40,6 +41,10 @@ function App() {
             <p>El contenido envolvemos dentro del componente <b>Articulo</b> será enviado al componente como <b>this.props.children</b></p>
             <strong> Y mantiene las etiquetas y componentes que hayáis creado dentro </strong>
         </Articulo>
+        <br/>
+        <br/>
+        <br/>
+        <FetchExample></FetchExample>
     </div>
   );
 }
